@@ -44,7 +44,7 @@ export async function GET() {
         // 2. check each product's status and send email accordigly
         const emailNotifyType = getEmailNotifType(scrapedProduct, currentProduct);
 
-        if(emailNotifyType && updatedProduct.user.length > 0){
+        if(emailNotifyType && updatedProduct?.user?.length > 0){
             const productInfo = {
                 title: updatedProduct.title,
                 url: updatedProduct.url,

@@ -103,6 +103,9 @@ export const sendEmail = async (
     subject: emailContent.subject,
   };
 
+  console.log("mail ", process.env.EMAIL_ID);
+  console.log("password ", process.env.EMAIL_PASSWORD);
+
 
 
   try {

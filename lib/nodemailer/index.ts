@@ -97,11 +97,13 @@ export const sendEmail = async (
 ) => {
   console.log("I am inside sendmail");
   const mailOptions = {
-    from: process.env.Email_ID,
+    from: process.env.EMAIL_ID,
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
   };
+
+
 
   try {
     const info = await transporter.sendMail(mailOptions);

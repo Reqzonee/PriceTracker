@@ -81,21 +81,18 @@ export async function generateEmailBody(
 }
 
 const transporter = nodemailer.createTransport({
-  pool: true,
-  service: "hotmail",
-  port: 2525,
+  host: 'smtp.office365.com',
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
     user: 'bhattparaj1@outlook.com',
     pass: process.env.EMAIL_PASSWORD,
   },
-  maxConnections: 1,
 });
 
-export const sendEmail = async (
-  emailContent: EmailContent,
-  sendTo: string[]
-) => {
-  console.log("I am inside sendmail");
+export const sendEmail = async (emailContent:EmailContent, sendTo:String[]) => {
+  console.log("I am inside sendEmail");
+
   const mailOptions = {
     from: "bhattparaj1@outlook.com",
     to: sendTo,
@@ -103,20 +100,23 @@ export const sendEmail = async (
     subject: emailContent.subject,
   };
 
-  // console.log("mail ", process.env.EMAIL_ID);
-  // console.log("password ", process.env.EMAIL_PASSWORD);
-
-
-
   try {
+    console.log("Sending email with options:", mailOptions);
     const info = await transporter.sendMail(mailOptions);
     console.log("Email Sent:", info);
   } catch (error) {
     console.error("Error sending email:", error);
   }
-
 };
 
-export const sendEmailSendGrid = async ()=>{
-
+// Simple script to test credentials
+const verifySMTP = async () => {
+  try {
+    await transporter.verify();
+    console.log('Server is ready to take our messages');
+  } catch (error) {
+    console.error('Error verifying SMTP connection:', error);
+  }
 };
+
+verifySMTP();

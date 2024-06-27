@@ -116,3 +116,7 @@ export const sendEmail = async (
   }
 
 };
+
+export const sendEmailSendGrid = async ()=>{
+
+};

@@ -97,14 +97,14 @@ export const sendEmail = async (
 ) => {
   console.log("I am inside sendmail");
   const mailOptions = {
-    from: process.env.EMAIL_ID,
+    from: "bhattparaj1@outlook.com",
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
   };
 
-  console.log("mail ", process.env.EMAIL_ID);
-  console.log("password ", process.env.EMAIL_PASSWORD);
+  // console.log("mail ", process.env.EMAIL_ID);
+  // console.log("password ", process.env.EMAIL_PASSWORD);
 
 
 

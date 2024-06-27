@@ -81,16 +81,19 @@ export async function generateEmailBody(
 }
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',
+  host: "smtp.office365.com",
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: 'bhattparaj1@outlook.com',
+    user: "bhattparaj1@outlook.com",
     pass: process.env.EMAIL_PASSWORD,
   },
 });
 
-export const sendEmail = async (emailContent:EmailContent, sendTo:String[]) => {
+export const sendEmail = async (
+  emailContent: EmailContent,
+  sendTo: string[]
+) => {
   console.log("I am inside sendEmail");
 
   const mailOptions = {
@@ -113,9 +116,9 @@ export const sendEmail = async (emailContent:EmailContent, sendTo:String[]) => {
 const verifySMTP = async () => {
   try {
     await transporter.verify();
-    console.log('Server is ready to take our messages');
+    console.log("Server is ready to take our messages");
   } catch (error) {
-    console.error('Error verifying SMTP connection:', error);
+    console.error("Error verifying SMTP connection:", error);
   }
 };
 
